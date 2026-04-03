@@ -1,0 +1,69 @@
+{
+  "theme": "DARK",
+  "archetype": "5 (Jewel & Luxury)",
+  "design_philosophy": "A premium, magical storytelling tool. We avoid generic 'tech-AI' aesthetics (neon, purple gradients) and instead treat the interface as an elegant, dimly lit writer's desk. The generated art is the hero. We use deep midnight tones, glassmorphic panels for UI, and warm amber accents to symbolize the 'spark' of creativity.",
+  "colors": {
+    "background": "#05050A",
+    "background_secondary": "#0A0A0F",
+    "surface": "rgba(255, 255, 255, 0.03)",
+    "surface_border": "rgba(255, 255, 255, 0.08)",
+    "primary": "#F5A623",
+    "primary_hover": "#F8C067",
+    "primary_foreground": "#05050A",
+    "text_primary": "#FAFAFA",
+    "text_secondary": "#A1A1AA",
+    "text_muted": "#52525B",
+    "error": "#EF4444",
+    "success": "#10B981"
+  },
+  "typography": {
+    "heading_font": "'Cormorant Garamond', serif",
+    "body_font": "'Outfit', sans-serif",
+    "mono_font": "'JetBrains Mono', monospace",
+    "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none font-medium",
+    "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-medium",
+    "h3": "text-xl sm:text-2xl font-medium",
+    "body": "text-base leading-relaxed text-zinc-400",
+    "labels": "text-xs tracking-[0.2em] uppercase text-zinc-500 font-semibold"
+  },
+  "layout_and_spacing": {
+    "philosophy": "Generous spacing. The main generator UI should be a prominent, asymmetrical bento layout on desktop.",
+    "grid_system": "Left column (col-span-12 lg:col-span-5) for inputs; Right column (col-span-12 lg:col-span-7) for the canvas/preview window.",
+    "container_padding": "p-6 md:p-12 lg:p-16",
+    "surface_style": "Crystal Glassmorphism: backdrop-blur-2xl bg-white/[0.03] border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-2xl",
+    "input_style": "Solid dark background (bg-[#09090E]), 1px subtle border, sharp or subtle rounded edges (rounded-lg)."
+  },
+  "components": {
+    "textarea": "Shadcn Textarea, heavily customized. No generic focus ring. Focus state should be a subtle amber glow or border (focus:border-[#F5A623]/50 focus:ring-1 focus:ring-[#F5A623]/20). Include a character counter (0/500) using the mono font.",
+    "select": "Shadcn Select for illustration styles (e.g., 'Watercolor', 'Concept Art', 'Vintage Sketch', 'Cyberpunk', 'Ghibli'). Must match textarea styling.",
+    "generate_button": "The hero CTA. Background #F5A623, text black. Font should be Outfit medium. On hover, slightly lift (-translate-y-0.5) and increase brightness. Add a subtle 'sparkle' icon (Lucide).",
+    "download_button": "Ghost or Outline button. text-white border-white/20 hover:bg-white/10. With Lucide Download icon.",
+    "gallery": "A masonry or bento grid of previously generated (or example) images. Images must have slight zoom on hover (group-hover:scale-105) and a gradient overlay at the bottom showing the prompt.",
+    "loading_state": "Do not use a generic spinner. Use a pulsing skeleton for the image area, and perhaps a 'Tracing Beam' effect on the border of the preview container. Text should say 'Conjuring illustration...' or 'Generando ilustración...'.",
+    "error_state": "Elegant error toast using Sonner, plus an inline 'Retry' (Reintentar) button if the generation fails."
+  },
+  "motion": {
+    "hover": "All interactive elements must have transition-all duration-300.",
+    "entrance": "Staggered fade-up for hero elements and gallery items using framer-motion.",
+    "image_reveal": "When an image finishes loading, it should fade in smoothly over 800ms with a slight blur-to-sharp effect."
+  },
+  "media": {
+    "background_texture": "https://images.unsplash.com/photo-1614580378008-bb0fee1ade02?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDB8MHwxfHNlYXJjaHwyfHxkYXJrJTIwc3RhcnJ5JTIwbmlnaHQlMjBza3klMjB0ZXh0dXJlfGVufDB8fHx8MTc3NTI0OTA2MXww&ixlib=rb-4.1.0&q=85",
+    "gallery_example_1": "https://images.unsplash.com/photo-1766307543930-a35e9417b2d5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHw0fHxtYWdpY2FsJTIwZm9yZXN0JTIwaWxsdXN0cmF0aW9ufGVufDB8fHx8MTc3NTI0OTA2MXww&ixlib=rb-4.1.0&q=85",
+    "gallery_example_2": "https://images.unsplash.com/photo-1770034285769-4a5a3f410346?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwxfHxtYWdpY2FsJTIwZm9yZXN0JTIwaWxsdXN0cmF0aW9ufGVufDB8fHx8MTc3NTI0OTA2MXww&ixlib=rb-4.1.0&q=85",
+    "gallery_example_3": "https://images.pexels.com/photos/3630100/pexels-photo-3630100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "canvas_placeholder": "https://images.unsplash.com/photo-1579398707644-ff84b1e6931f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDB8MHwxfHNlYXJjaHwzfHxkYXJrJTIwc3RhcnJ5JTIwbmlnaHQlMjBza3klMjB0ZXh0dXJlfGVufDB8fHx8MTc3NTI0OTA2MXww&ixlib=rb-4.1.0&q=85"
+  },
+  "instructions_to_main_agent": [
+    "1. Setup standard React + Vite + Tailwind project. Use js not tsx. Install lucide-react, framer-motion, sonner.",
+    "2. Add Google Fonts 'Cormorant Garamond' and 'Outfit' to index.html and configure them in tailwind.config.js.",
+    "3. Build the UI as a Landing Page. The background should be dark (#05050A) with the starry texture blended in (opacity-20 or mix-blend-screen) fixed in the background.",
+    "4. Header: 'Story-illustrator' logo text using Cormorant Garamond.",
+    "5. Hero Section: Left side has the Textarea (max 500 chars), Style Select dropdown, and the 'Generar ilustración' button. Right side is the glassmorphic 'Canvas' container where the image appears.",
+    "6. Serverless API Proxy: Implement a Vercel serverless function (e.g. at /api/generate) that accepts { prompt, style } and calls the Replicate API (model: flux-schnell). Note: use standard fetch. The UI must handle the API loading state and errors. The main prompt requests using 'mi API key', so read from process.env.REPLICATE_API_TOKEN in the serverless function.",
+    "7. When the image is generated, display it in the Right Canvas area. Reveal the 'Descargar PNG' (Download PNG) button which triggers a download of the returned image URL.",
+    "8. Below the Hero, add a 'Galería de inspiración' (Gallery) using the example images provided in media to show what's possible.",
+    "9. Use Lucide icons: Sparkles (for generate button), Download, Image (for empty state), RefreshCcw (for retry on error).",
+    "10. Add data-testid to key elements: data-testid='prompt-textarea', data-testid='style-select', data-testid='generate-btn', data-testid='download-btn', data-testid='result-image'."
+  ]
+}
