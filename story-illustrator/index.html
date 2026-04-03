@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story-illustrator | Transforma tus palabras en arte</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Texture -->
+    <div class="background-texture"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">Story-illustrator</h1>
+            <p class="tagline">Transforma tus palabras en arte visual</p>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <!-- Left Column: Input Controls -->
+            <div class="input-column">
+                <div class="glass-panel">
+                    <label class="input-label">Tu historia</label>
+                    <div class="textarea-wrapper">
+                        <textarea 
+                            id="promptTextarea" 
+                            data-testid="prompt-textarea"
+                            placeholder="Escribe tu historia, idea o descripción... (en inglés o español)"
+                            maxlength="500"
+                        ></textarea>
+                        <div class="char-counter">
+                            <span id="charCount">0</span>/500
+                        </div>
+                    </div>
+                    
+                    <label class="input-label" style="margin-top: 1.5rem;">Estilo de ilustración</label>
+                    <select id="styleSelect" data-testid="style-select" class="style-select">
+                        <option value="watercolor">Acuarela</option>
+                        <option value="concept-art">Arte Conceptual</option>
+                        <option value="vintage-sketch">Boceto Vintage</option>
+                        <option value="cyberpunk">Cyberpunk</option>
+                        <option value="ghibli">Estilo Ghibli</option>
+                        <option value="oil-painting">Óleo</option>
+                        <option value="digital-art">Arte Digital</option>
+                    </select>
+                    
+                    <button 
+                        id="generateBtn" 
+                        data-testid="generate-btn"
+                        class="generate-btn"
+                    >
+                        <i data-lucide="sparkles"></i>
+                        <span>Generar ilustración</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Right Column: Canvas/Preview -->
+            <div class="canvas-column">
+                <div class="glass-panel canvas-container" id="canvasContainer">
+                    <!-- Empty State -->
+                    <div id="emptyState" class="empty-state">
+                        <i data-lucide="image" class="empty-icon"></i>
+                        <p>Tu ilustración aparecerá aquí</p>
+                    </div>
+                    
+                    <!-- Loading State -->
+                    <div id="loadingState" class="loading-state" style="display: none;">
+                        <div class="loading-border"></div>
+                        <div class="loading-content">
+                            <div class="loading-spinner"></div>
+                            <p class="loading-text">Conjurando ilustración...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Result State -->
+                    <div id="resultState" class="result-state" style="display: none;">
+                        <img id="resultImage" data-testid="result-image" alt="Ilustración generada">
+                        <div class="result-actions">
+                            <button id="downloadBtn" data-testid="download-btn" class="download-btn">
+                                <i data-lucide="download"></i>
+                                <span>Descargar PNG</span>
+                            </button>
+                            <button id="newImageBtn" class="new-image-btn">
+                                <i data-lucide="refresh-ccw"></i>
+                                <span>Nueva imagen</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Error State -->
+                    <div id="errorState" class="error-state" style="display: none;">
+                        <i data-lucide="alert-circle" class="error-icon"></i>
+                        <p class="error-message" id="errorMessage">Algo salió mal. Por favor, intenta de nuevo.</p>
+                        <button id="retryBtn" class="retry-btn">
+                            <i data-lucide="refresh-ccw"></i>
+                            <span>Reintentar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <h2 class="gallery-title">Galería de inspiración</h2>
+            <p class="gallery-subtitle">Descubre lo que es posible crear</p>
+            
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be added here dynamically -->
+            </div>
+        </section>
+    </div>
+    
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
