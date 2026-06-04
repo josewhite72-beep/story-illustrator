@@ -4,12 +4,13 @@ const state = {
     galleryImages: [],
     isGenerating: false,
     retryCount: 0,
-    maxRetries: 3
+    maxRetries: 3,
+    imageCount: 4
 };
 
 // DOM Elements
 const elements = {
-    promptTextarea: document.getElementById('promptTextarea'),
+    countSelector: document.getElementById('countSelector'),
     charCount: document.getElementById('charCount'),
     styleSelect: document.getElementById('styleSelect'),
     generateBtn: document.getElementById('generateBtn'),
@@ -47,6 +48,15 @@ function init() {
     elements.downloadBtn.addEventListener('click', handleDownload);
     elements.newImageBtn.addEventListener('click', resetToInput);
     elements.retryBtn.addEventListener('click', handleRetry);
+    
+    // Count selector
+    elements.countSelector.addEventListener('click', (e) => {
+        const btn = e.target.closest('.count-btn');
+        if (!btn) return;
+        document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.imageCount = parseInt(btn.dataset.count);
+    });
     
     // Load gallery
     loadGallery();
@@ -239,9 +249,9 @@ function addToGallery(imageUrl, prompt) {
     // Add to beginning of array
     state.galleryImages.unshift({ imageUrl, prompt });
     
-    // Keep only last 6 images
-    if (state.galleryImages.length > 6) {
-        state.galleryImages = state.galleryImages.slice(0, 6);
+    // Keep only last N images based on imageCount
+    if (state.galleryImages.length > state.imageCount) {
+        state.galleryImages = state.galleryImages.slice(0, state.imageCount);
     }
     
     // Save to localStorage
