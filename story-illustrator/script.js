@@ -10,6 +10,7 @@ const state = {
 
 // DOM Elements
 const elements = {
+    promptTextarea: document.getElementById('promptTextarea'),
     countSelector: document.getElementById('countSelector'),
     charCount: document.getElementById('charCount'),
     styleSelect: document.getElementById('styleSelect'),
